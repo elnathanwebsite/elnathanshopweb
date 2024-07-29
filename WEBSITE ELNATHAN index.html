@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL NATHAN WEBSITE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Philosopher:ital@1&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background: url('https://img.freepik.com/free-photo/portrait-futuristic-female-humanoid-with-advanced-technology_23-2151666248.jpg?t=st=1722228321~exp=1722231921~hmac=07434eae68946d1067dcf464d7a8cda14ed6c4c36d794b897a9768bde7778307&w=740') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        header {
+            width: 100%;
+            height: 130px;
+            background: url('https://img.freepik.com/premium-vector/urban-street-art-graffiti-background_675911-2.jpg?w=1060') no-repeat center center;
+            background-size: cover;
+            text-align: center;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            filter: brightness(50%);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-family: 'Odibee Sans', sans-serif;
+            color: #fff;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-links {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .contact-links a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .contact-links a:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: rgb(255, 128, 0);
+        }
+
+        .search-bar {
+            position: fixed;
+            /* Fixed position */
+            top: 130px;
+            /* Distance from top (adjust based on header height) */
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background-color: #00000085;
+            /* Solid background color for the search bar container */
+            padding: 10px;
+            /* Optional: Add some padding to the search bar container */
+            border-radius: 5px;
+            /* Optional: Add border-radius to match the button styling */
+            z-index: 1000;
+            /* Ensure it stays above other elements */
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #000000ba;
+            border-radius: 5px;
+            background-color: #24033c;
+            /* Solid background color for the input field */
+            color: #ffffff;
+            outline: none;
+            width: 300px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #0066ff;
+            /* Solid background color for the button */
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+
+        .search-bar button:hover {
+            background-color: #7b1212;
+            /* Darker solid color on hover */
+        }
+
+        .main-content {
+            margin-top: 250px;
+            /* Create space for the header and search bar */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .product {
+            background-color: #000000a0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            box-sizing: border-box;
+            color: #000;
+        }
+
+        .product img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .product h2 {
+            margin: 10px 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .product p {
+            color: #08e200;
+            font-size: 18px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 20px 30px;
+            background-color: #1e089a;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: #8f0000;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .product {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .product {
+                width: calc(33.333% - 20px);
+            }
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .no-results button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #77ff00;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .no-results button:hover {
+            background-color: #328f00;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        footer h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .odibee-sans-regular {
+            font-family: "Odibee Sans", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Spinner Animation */
+        .spinner {
+            width: 120px;
+            /* Bigger size */
+            height: 120px;
+            /* Bigger size */
+            border: 15px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 15px solid #3498db;
+            border-right: 15px solid #e74c3c;
+            border-bottom: 15px solid #f39c12;
+            border-left: 15px solid #2ecc71;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        /* Spinner Rotation Animation */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Label for Spinner Sections */
+        .spinner-labels {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .spinner-label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .spinner-label:nth-child(1) {
+            transform: rotate(0deg) translateY(-50%);
+        }
+
+        .spinner-label:nth-child(2) {
+            transform: rotate(90deg) translateY(-50%);
+        }
+
+        .spinner-label:nth-child(3) {
+            transform: rotate(180deg) translateY(-50%);
+        }
+
+        .spinner-label:nth-child(4) {
+            transform: rotate(270deg) translateY(-50%);
+        }
+
+        .spinner-container {
+            text-align: center;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .result-container {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .result-container img {
+            max-width: 150px;
+            /* Larger image size */
+            margin-top: 10px;
+        }
+
+        /* Larger Button */
+        .spin-button {
+            padding: 15px 30px;
+            /* Larger padding */
+            font-size: 18px;
+            /* Larger font size */
+            border: none;
+            background-color: #77ff00;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+
+        .spin-button:hover {
+            background-color: #328f00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="odibee-sans-regular">EL NATHAN</h1>
+        <div class="contact-links">
+            <a href="https://www.instagram.com/elnathan1_?igsh=YzljYTk1ODg3Zg==" target="_blank">Instagram</a>
+            <a href="http://tiktok.com/@elnatahanxyz_" target="_blank">TikTok</a>
+            <a href="https://wa.me/qr/2NJZAKYTCNJRN1" target="_blank">WhatsApp</a>
+            <a href="https://shopee.co.id/shop/1119999704?tab=shop" target="_blank">Shopee</a>
+        </div>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Cari produk...">
+        <button id="search-button">Cari</button>
+    </div>
+
+    <div class="main-content">
+        <div class="product-container">
+            <!-- Existing Products -->
+            <div class="product" data-name="TSHIRT CUTE ANIMAL">
+                <img src="https://seller.shopee.co.id/api/v1/cdn_proxy/id-11134207-7r98u-lx7smh8jwti308"
+                    alt="TSHIRT CUTE ANIMAL">
+                <h2>TSHIRT CUTE ANIMAL</h2>
+                <p>Rp 120.000</p>
+                <a href="https://wa.me/qr/2NJZAKYTCNJRN1" class="buy-button">Buy</a>
+            </div>
+            <div class="product" data-name="JAPANSE CUTE CAT WHITE COLOR FULL CATOON">
+                <img src="https://seller.shopee.co.id/api/v1/cdn_proxy/id-11134207-7r98s-lx7smh8jpsnv98"
+                    alt="JAPANSE CUTE CAT WHITE COLOR FULL CATOON">
+                <h2>JAPANSE CUTE CAT WHITE COLOR FULL CATOON</h2>
+                <p>Rp 120.000</p>
+                <a href="https://wa.me/qr/2NJZAKYTCNJRN1" class="buy-button">Buy</a>
+            </div>
+            <div class="product" data-name="REWRITE THE STAR TSHIRT DESIGN">
+                <img src="https://seller.shopee.co.id/api/v1/cdn_proxy/id-11134207-7r98y-lo5i5kjcf5e081"
+                    alt="REWRITE THE STAR TSHIRT DESIGN">
+                <h2>REWRITE THE STAR TSHIRT DESIGN</h2>
+                <p>Rp 120.000</p>
+                <a href="https://wa.me/qr/2NJZAKYTCNJRN1" class="buy-button">Buy</a>
+            </div>
+            <div class="product" data-name="KAOS DENGAN DESAIN SEPUH YANG PERNAH VIRAL">
+                <img src="https://seller.shopee.co.id/api/v1/cdn_proxy/id-11134207-7r98y-lolgsr57j9ts7c"
+                    alt="KAOS DENGAN DESAIN SEPUH YANG PERNAH VIRAL">
+                <h2>KAOS DENGAN DESAIN SEPUH YANG PERNAH VIRAL</h2>
+                <p>Rp 120.000</p>
+                <a href="https://wa.me/qr/2NJZAKYTCNJRN1" class="buy-button">Buy</a>
+            </div>
+            <div class="product" data-name="LET HER GO">
+                <img src="https://seller.shopee.co.id/api/v1/cdn_proxy/id-11134207-7r98v-lob31rvlxq1f6c"
+                    alt="LET HER GO">
+                <h2>LET HER GO</h2>
+                <p>Rp 120.000</p>
+                <a href="https://wa.me/qr/2NJZAKYTCNJRN1" class="buy-button">Buy</a>
+            </div>
+
+            <!-- New Products -->
+            <div class="product" data-name="STREET GRAFITI">
+                <img src="https://seller.shopee.co.id/api/v1/cdn_proxy/id-11134207-7r991-lyadz7rjyimzc0"
+                    alt="STREET GRAFITI">
+                <h2>STREET GRAFITI</h2>
+                <p>Rp 120.000</p>
+                <a href="https://wa.me/qr/2NJZAKYTCNJRN1" class="buy-button">Buy</a>
+            </div>
+            <div class="product" data-name="NATHAN GRAFITI">
+                <img src="https://seller.shopee.co.id/api/v1/cdn_proxy/id-11134207-7r98v-lyadz7rk5jh731"
+                    alt="NATHAN GRAFITI">
+                <h2>NATHAN GRAFITI</h2>
+                <p>Rp 120.000</p>
+                <a href="https://wa.me/qr/2NJZAKYTCNJRN1" class="buy-button">Buy</a>
+            </div>
+            <div class="product" data-name="CAT NATHAN PINK GRAFITI">
+                <img src="https://seller.shopee.co.id/api/v1/cdn_proxy/id-11134207-7r98t-lyadz7rk6y1n03"
+                    alt="CAT NATHAN PINK GRAFITI">
+                <h2>CAT NATHAN PINK GRAFITI</h2>
+                <p>Rp 120.000</p>
+                <a href="https://wa.me/qr/2NJZAKYTCNJRN1" class="buy-button">Buy</a>
+            </div>
+            <div class="product" data-name="NATHAN GRAFITI CUSTOM 1">
+                <img src="https://seller.shopee.co.id/api/v1/cdn_proxy/id-11134207-7r98v-lyadz7rk8cm3f4"
+                    alt="NATHAN GRAFITI CUSTOM 1">
+                <h2>NATHAN GRAFITI CUSTOM 1</h2>
+                <p>Rp 120.000</p>
+                <a href="https://wa.me/qr/2NJZAKYTCNJRN1" class="buy-button">Buy</a>
+            </div>
+            <div class="product" data-name="NATHAN GRAFITI TOP 1">
+                <img src="https://seller.shopee.co.id/api/v1/cdn_proxy/id-11134207-7r98q-lyadz7rk9r6jdb"
+                    alt="NATHAN GRAFITI TOP 1">
+                <h2>NATHAN GRAFITI TOP 1</h2>
+                <p>Rp 120.000</p>
+                <a href="https://wa.me/qr/2NJZAKYTCNJRN1" class="buy-button">Buy</a>
+            </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="no-results">
+            <p>Produk tidak ditemukan.</p>
+            <button onclick="window.location.reload();">Kembali</button>
+        </div>
+
+        <!-- Spinner Game Section -->
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <button class="spin-button" onclick="spin()">Spin</button>
+        </div>
+
+        <!-- Result Container -->
+        <div class="result-container" id="result-container">
+            <h2>Produk yang Anda dapatkan:</h2>
+            <img id="result-image" src="" alt="Produk yang didapat">
+            <p id="result-name"></p>
+        </div>
+    </div>
+
+    <footer>
+        <h3>DI BUAT OLEH MUHAMMAD ARIFAN ALFAHRI</h3>
+    </footer>
+
+    <script>
+        document.getElementById('search-button').addEventListener('click', function () {
+            const searchValue = document.getElementById('search-input').value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+            let found = false;
+
+            products.forEach(product => {
+                const productName = product.getAttribute('data-name').toLowerCase();
+                if (productName.includes(searchValue) || searchValue === '') {
+                    product.style.display = 'block';
+                    found = true;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+
+            // Show or hide the no-results message based on whether any products were found
+            document.getElementById('no-results').style.display = found ? 'none' : 'block';
+        });
+        function spin() {
+            const spinner = document.querySelector('.spinner');
+            const resultContainer = document.getElementById('result-container');
+            const products = document.querySelectorAll('.product');
+
+            // Hide previous results
+            resultContainer.style.display = 'none';
+
+            // Start the spinner animation
+            spinner.style.animation = 'spin 2s linear'; // Set animation duration for 2 seconds
+
+            // Simulate a delay for the spinning effect
+            setTimeout(() => {
+                // Stop the spinner animation
+                spinner.style.animation = 'none';
+
+                // Choose a random product
+                const randomIndex = Math.floor(Math.random() * products.length);
+                const selectedProduct = products[randomIndex];
+                const productName = selectedProduct.getAttribute('data-name');
+                const productImage = selectedProduct.querySelector('img').src;
+
+                // Update result container
+                document.getElementById('result-name').textContent = productName;
+                document.getElementById('result-image').src = productImage;
+                resultContainer.style.display = 'block';
+
+            }, 2000); // Duration matches spinner animation
+        }
+
+    </script>
+
+</body>
+
+</html>
